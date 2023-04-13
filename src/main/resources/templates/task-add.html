@@ -8,36 +8,39 @@
     <h1 class="text-center mt-2"><span class="badge badge-pill badge-dark">Add task</span></h1>
     <hr class="hr-3 w-25 bg-white"/>
 
-    <form class="mx-auto w-25 bg-blur rounded" method="" action="/">
+    <form class="mx-auto w-25 bg-blur rounded"
+          th:method="POST"
+          th:action="@{/tasks/add}"
+          th:object="${taskAddModel}">
 
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="description" class="h4 mb-2">Description</label>
+                <label th:for="description" class="h4 mb-2">Description</label>
             </div>
-            <textarea type="text" class="form-control" id="description" name="description"></textarea>
-            <small class="text-danger">Description error message</small>
+            <textarea type="text" class="form-control" th:field="*{description}" th:errorclass="bg-danger"></textarea>
+            <small th:if="${#fields.hasErrors('description')}" class="text-danger">Description should be between 2 and 50 symbols long</small>
         </div>
 
         <div class="form-group">
             <div class="label-holder text-white textCol d-flex justify-content-center">
-                <label for="dueDate" class="h4 mb-2">Set due date</label>
+                <label th:for="dueDate" class="h4 mb-2">Set due date</label>
             </div>
-            <input type="date" class="form-control" id="dueDate" name="dueDate"></input>
-            <small class="text-danger">Due Date error message</small>
+            <input type="date" class="form-control" th:field="*{dueDate}" th:errorclass="bg-danger"></input>
+            <small th:if="${#fields.hasErrors('dueDate')}" class="text-danger">Date cannot be blank and should be in the future</small>
         </div>
 
         <div class="form-group">
             <div class="text-white label-holder d-flex justify-content-center">
-                <label for="priority" class="h4 mb-2">Priority</label>
+                <label th:for="priority" class="h4 mb-2">Priority</label>
             </div>
-            <select class="browser-default custom-select" id="priority" name="priority">
+            <select class="browser-default custom-select" id="priority" name="priority" th:errorclass="bg-danger">
                 <option value="">Select priority</option>
-                <option value="URGENT">Urgent</option>
-                <option value="IMPORTANT">Important</option>
-                <option value="LOW">Low</option>
+                <option th:each="priority : ${priorities}"
+                        th:text="${priority}"
+                        th:selected="${priority} == *{priority}"></option>
             </select>
 
-            <small class="text-danger">Priority error message</small>
+            <small th:if="${#fields.hasErrors('priority')}" class="text-danger">Priority is mandatory</small>
         </div>
 
         <div class="button-holder d-flex justify-content-center">

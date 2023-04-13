@@ -26,7 +26,7 @@
                 </li>
 
                 <li th:unless="${@loggedUser.isEmpty()}" class="nav-item col-md-4">
-                    <a class="nav-link my-text-color active h5 " th:href="@{/auth/logout}">Logout</a>
+                    <a class="nav-link my-text-color active h5 " th:href="@{/auth/logout}" th:text="'Logout, ' + ${@loggedUser.getUsername()}">Logout</a>
                 </li>
             </ul>
         </div>

@@ -14,7 +14,7 @@ import java.time.LocalDate;
 @Table(name = "tasks")
 public class Task extends BaseEntity {
 
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String description;
 
     @Column(name = "due_date", nullable = false)

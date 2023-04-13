@@ -1,6 +1,7 @@
 package bg.softuni.examretake.controller;
 
 import bg.softuni.examretake.helper.LoggedUser;
+import bg.softuni.examretake.model.TaskViewModel;
 import bg.softuni.examretake.service.task.TaskService;
 import bg.softuni.examretake.service.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,10 +35,10 @@ public class HomeController {
             return model;
         }
 
-      //  List<SongViewModel> songs = this.songService.getAllSongs();
-     //   Set<Song> playlist = this.userService.getPlaylist(this.loggedUser.getId());
+        Set<TaskViewModel> tasks = this.taskService.getAllTasks();
+      //  Set<Song> playlist = this.userService.getPlaylist(this.loggedUser.getId());
 
-     //   model.addObject("songs", songs);
+        model.addObject("tasks", tasks);
        // model.addObject("playlist", playlist);
         //model.addObject("totalMin", playlist.stream().mapToInt(Song::getDuration).sum());
 
