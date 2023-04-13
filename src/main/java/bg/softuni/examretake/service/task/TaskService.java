@@ -2,6 +2,7 @@ package bg.softuni.examretake.service.task;
 
 import bg.softuni.examretake.model.TaskViewModel;
 import bg.softuni.examretake.model.binding.TaskAddModel;
+import bg.softuni.examretake.model.entity.Priority;
 import bg.softuni.examretake.model.entity.Task;
 import bg.softuni.examretake.repository.PriorityRepository;
 import bg.softuni.examretake.repository.TaskRepository;
@@ -42,7 +43,7 @@ public class TaskService {
         for (Task task : taskList) {
             TaskViewModel taskModel = new TaskViewModel();
             this.mapper.map(task, taskModel);
-           // taskModel.setUser(task.getUser().getUsername());
+            taskModel.setPriority(task.getPriority().getName());
 
             tasks.add(taskModel);
         }
