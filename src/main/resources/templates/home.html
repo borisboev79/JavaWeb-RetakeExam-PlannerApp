@@ -9,7 +9,7 @@
 
         <div class="col-5">
             <h3 class=" bg-gray text-dark  mb-0 mt-2">Assigned to me</h3>
-            <h6 class=" bg-gray text-dark  mb-0 mt-0">Username: {loggedUsername}</h6>
+            <h6 class=" bg-gray text-dark  mb-0 mt-0">Username: <th:block th:text="${@loggedUser.username}"/> </h6>
             <div class="bg-dark rounded m-auto" style="height: 67vh; overflow: auto">
                 <ul th:each="assignedTask : ${assignedTasks}" class="list-group list-group-horizontal text-dark">
                     <li class="list-group-item bg-warning">
@@ -18,7 +18,7 @@
                                 <td scope="row" style="width: 5%"><img class="mr-2 " src="/img/pin.png" alt="Pin" width="35px" height="35px"></td>
                                 <td style="width: 15%"><th:block th:text="${assignedTask.priority}"/></td>
                                 <td style="width: 40%"><th:block th:text="${assignedTask.dueDate}"/></td>
-                                <td><a href="/"><img src="/img/done-remove-button.png" height="35px"></a></td>
+                                <td><a th:href="@{/tasks/remove/{id}(id=${assignedTask.id})}"><img src="/img/done-remove-button.png" height="35px"></a></td>
                                 <td><a th:href="@{/user/return/{id}(id=${assignedTask.id})}"><img src="/img/return.png" height="35px"></a></td>
                             </tr>
                         </table>

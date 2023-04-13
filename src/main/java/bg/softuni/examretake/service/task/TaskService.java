@@ -62,7 +62,7 @@ public class TaskService {
 
     @Transactional
     public Set<TaskViewModel> getAssignedTasks() {
-        User user = this.userRepository.findById(this.loggedUser.getId()).orElse(new User());
+        User user = getUser();
         Set<TaskViewModel> tasks = new LinkedHashSet<>();
         List<Task> taskList = user.getTasks().stream().filter(Objects::nonNull).toList();
 
@@ -75,5 +75,23 @@ public class TaskService {
         }
 
         return tasks;
+    }
+
+    @Transactional
+    public void removeTask(Long id) {
+        User user = getUser();
+        Task task = this.taskRepository.findById(id).orElse(null);
+
+        user.getTasks().remove(task);
+
+        assert task != null;
+        task.setUser(null);
+
+        this.userRepository.saveAndFlush(user);
+        this.taskRepository.delete(task);
+    }
+
+    private User getUser(){
+        return this.userRepository.findById(this.loggedUser.getId()).orElse(new User());
     }
 }
