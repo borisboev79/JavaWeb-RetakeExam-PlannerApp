@@ -13,7 +13,7 @@
 <header>
     <nav class="navbar navbar-expand-lg bg-nav rounded">
         <a th:unless="${@loggedUser.isEmpty()}" class="nav-link my-text-color active h5 " th:href="@{/home}">Planner App</a>
-        <a th:unless="${@loggedUser.isEmpty()}" class="nav-link my-text-color active h5 " href="/">Add Task</a>
+        <a th:unless="${@loggedUser.isEmpty()}" class="nav-link my-text-color active h5 " th:href="@{/tasks/add}">Add Task</a>
 
         <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNav">
             <ul class="navbar-nav row">
