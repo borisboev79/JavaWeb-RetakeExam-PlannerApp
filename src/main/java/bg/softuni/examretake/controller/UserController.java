@@ -23,4 +23,11 @@ public class UserController {
 
         return "redirect:/home";
     }
+
+    @GetMapping("return/{id}")
+    public String returnTask(@PathVariable Long id){
+        this.userService.returnTaskFromUser(id);
+
+        return "redirect:/home";
+    }
 }

@@ -50,4 +50,19 @@ public class UserService {
         this.taskRepository.saveAndFlush(task);
 
     }
+
+    @Transactional
+    public void returnTaskFromUser(Long id) {
+        User user = this.userRepository.findById(this.loggedUser.getId()).orElse(new User());
+        Task task = this.taskRepository.findById(id).orElse(null);
+
+        user.getTasks().remove(task);
+
+        assert task != null;
+        task.setUser(null);
+
+        this.userRepository.saveAndFlush(user);
+        this.taskRepository.saveAndFlush(task);
+
+    }
 }

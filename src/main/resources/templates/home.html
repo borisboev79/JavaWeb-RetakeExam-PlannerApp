@@ -19,7 +19,7 @@
                                 <td style="width: 15%"><th:block th:text="${assignedTask.priority}"/></td>
                                 <td style="width: 40%"><th:block th:text="${assignedTask.dueDate}"/></td>
                                 <td><a href="/"><img src="/img/done-remove-button.png" height="35px"></a></td>
-                                <td><a href="/"><img src="/img/return.png" height="35px"></a></td>
+                                <td><a th:href="@{/user/return/{id}(id=${assignedTask.id})}"><img src="/img/return.png" height="35px"></a></td>
                             </tr>
                         </table>
                     </li>
