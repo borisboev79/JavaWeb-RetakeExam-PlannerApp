@@ -16,7 +16,7 @@
                         <table>
                             <tr>
                                 <td scope="row" style="width: 5%"><img class="mr-2 " src="/img/pin.png" alt="Pin" width="35px" height="35px"></td>
-                                <td style="width: 15%"><th:block th:text="${assignedTask.priority}"/></td>
+                                <td style="width: 15%"><th:block th:text="${#strings.capitalize(#strings.toLowerCase(assignedTask.priority))}"/></td>
                                 <td style="width: 40%"><th:block th:text="${assignedTask.dueDate}"/></td>
                                 <td><a th:href="@{/tasks/remove/{id}(id=${assignedTask.id})}"><img src="/img/done-remove-button.png" height="35px"></a></td>
                                 <td><a th:href="@{/user/return/{id}(id=${assignedTask.id})}"><img src="/img/return.png" height="35px"></a></td>
@@ -39,7 +39,7 @@
                             <table>
                                 <tr >
                                     <td style="width: 5%"><img class="mr-2 " src="/img/pin.png" alt="Pin" width="35px" height="35px"></td>
-                                    <td style="width: 15%"><a><th:block th:text="${task.priority}"/> </a></td>
+                                    <td style="width: 15%"><a><th:block th:text="${#strings.capitalize(#strings.toLowerCase(task.priority))}"/> </a></td>
                                     <td><a>Due Date: <th:block th:text="${task.dueDate}"/></a></td>
                                     <td><a class="ml-3" th:href="@{/user/assign/{id}(id=${task.id})}"><img src="/img/assign-to-me-button.png" height="35px"></a></td>
                                 </tr>
