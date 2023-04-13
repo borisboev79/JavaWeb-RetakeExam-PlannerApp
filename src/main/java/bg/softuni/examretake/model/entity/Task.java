@@ -23,7 +23,7 @@ public class Task extends BaseEntity {
     @ManyToOne(optional = false)
     private Priority priority;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     private User user;
 
 

@@ -25,7 +25,7 @@ public class User extends BaseEntity {
     @Column(nullable = false, unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user", targetEntity = Task.class)
+    @OneToMany(mappedBy = "user", targetEntity = Task.class, cascade = CascadeType.PERSIST)
     private Set<Task> tasks;
 
 

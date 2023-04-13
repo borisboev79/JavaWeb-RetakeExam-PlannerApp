@@ -36,11 +36,10 @@ public class HomeController {
         }
 
         Set<TaskViewModel> tasks = this.taskService.getAllTasks();
-      //  Set<Song> playlist = this.userService.getPlaylist(this.loggedUser.getId());
+        Set<TaskViewModel> assignedTasks = this.taskService.getAssignedTasks();
 
         model.addObject("tasks", tasks);
-       // model.addObject("playlist", playlist);
-        //model.addObject("totalMin", playlist.stream().mapToInt(Song::getDuration).sum());
+        model.addObject("assignedTasks", assignedTasks);
 
         model.setViewName("home");
 
