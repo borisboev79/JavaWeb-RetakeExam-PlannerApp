@@ -23,7 +23,7 @@
             <!--        <small class="invalid-feedback text-danger">Username error message</small>-->
 
             <input type="text" class="form-control"
-                   th:errorclass="bg-danger"
+                   th:errorclass="com-danger"
                    th:field="*{username}"/>
             <small th:if="${#fields.hasErrors('username')}" class="text-danger">Username length must be between 3 and 20 characters!</small>
         </div>
@@ -34,7 +34,7 @@
             </div>
             <input type="email" class="form-control"
                    th:field="*{email}"
-                   th:errorclass="bg-danger"/>
+                   th:errorclass="com-danger"/>
             <small th:if="${#fields.hasErrors('email')}" class="text-danger">Email cannot be empty!</small>
         </div>
 
@@ -44,7 +44,7 @@
             </div>
             <input type="password" class="form-control"
                    th:field="*{password}"
-                   th:errorclass="bg-danger"/>
+                   th:errorclass="com-danger"/>
             <small th:if="${#fields.hasErrors('password')}" class="text-danger">Password length must be between 3 and 20 characters!</small>
         </div>
 
@@ -54,7 +54,7 @@
             </div>
             <input type="password" class="form-control"
                    th:field="*{confirmPassword}"
-                   th:errorclass="bg-danger"
+                   th:errorclass="com-danger"
             />
             <small th:if="${#fields.hasErrors('*')}" th:errorclass="error" th:errors="${userRegisterModel}" class="text-danger">Passwords don't match</small>
         </div>

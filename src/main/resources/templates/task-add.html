@@ -17,7 +17,7 @@
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label th:for="description" class="h4 mb-2">Description</label>
             </div>
-            <textarea type="text" class="form-control" th:field="*{description}" th:errorclass="bg-danger"></textarea>
+            <textarea type="text" class="form-control" th:field="*{description}" th:errorclass="com-danger"></textarea>
             <small th:if="${#fields.hasErrors('description')}" class="text-danger">Description length must be between 2 and 50 characters!</small>
         </div>
 
@@ -25,7 +25,7 @@
             <div class="label-holder text-white textCol d-flex justify-content-center">
                 <label th:for="dueDate" class="h4 mb-2">Set due date</label>
             </div>
-            <input type="date" class="form-control" th:field="*{dueDate}" th:errorclass="bg-danger"></input>
+            <input type="date" class="form-control" th:field="*{dueDate}" th:errorclass="com-danger">
             <small th:if="${#fields.hasErrors('dueDate')}" class="text-danger">Due Date must be in the future!</small>
         </div>
 
@@ -33,7 +33,7 @@
             <div class="text-white label-holder d-flex justify-content-center">
                 <label th:for="priority" class="h4 mb-2">Priority</label>
             </div>
-            <select class="browser-default custom-select" id="priority" name="priority" th:errorclass="bg-danger">
+            <select class="browser-default custom-select" id="priority" name="priority" th:errorclass="com-danger">
                 <option value="">Select priority</option>
                 <option th:each="priority : ${priorities}"
                         th:text="${priority}"
